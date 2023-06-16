@@ -4093,7 +4093,7 @@ const exec = __nccwpck_require__(409);
 async function run() {
 	try {
 		const project_id = core.getInput('project_id');
-		const jira_token = core.getInput('jira_token');
+		const jira_token = core.getInput('token');
 		const src = __dirname
 
 		core.setOutput("Hello! - "+project_id+" - "+jira_token)
