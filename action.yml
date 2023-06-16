@@ -1,0 +1,13 @@
+name: Jira-Checks
+description: I will verify your jira ticket
+inputs:
+  checks:
+    description: Provide check logic
+    required: true
+    default: null
+outputs:
+  new-version:
+    description: Output on the basis of checks provided
+runs:
+  using: node12
+  main: action/index.js
