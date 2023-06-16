@@ -7,7 +7,7 @@ async function run() {
 		const jira_token = core.getInput('jira_token');
 		const src = __dirname
 
-		core.setOutput("Hello! - "+project_id)
+		core.setOutput("Hello! - "+project_id+" - "+jira_token)
 		//await exec.exec(`${src}/validate-jira-checks.sh -`);
 	} catch (error) {
 		core.setFailed("Failed")

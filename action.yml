@@ -1,8 +1,12 @@
 name: Jira-Checks
 description: I will verify your jira ticket
 inputs:
-  checks:
-    description: Provide check logic
+  token:
+    description: Provide Jira Token
+    required: true
+    default: null
+  project_id:
+    description: Provide Jira Project Id
     required: true
     default: null
 outputs:
