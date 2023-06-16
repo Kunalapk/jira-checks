@@ -3,8 +3,12 @@ const exec = require('@actions/exec');
 
 async function run() {
 	try {
+		const project_id = core.getInput('project_id');
+		const jira_token = core.getInput('jira_token');
 		const src = __dirname
-		await exec.exec(`${src}/validate-jira-checks.sh`);
+
+		core.setOutput("Hello! - "+project_id)
+		//await exec.exec(`${src}/validate-jira-checks.sh -`);
 	} catch (error) {
 		core.setFailed("Failed")
 	}

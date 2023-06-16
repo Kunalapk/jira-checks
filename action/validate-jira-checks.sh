@@ -3,3 +3,4 @@
 TEST_MESSAGE = "Message"
 
 echo ::set-output name=TEST_MESSAGE
+exit 0
