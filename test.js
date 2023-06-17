@@ -4,8 +4,8 @@ const exec = require('@actions/exec');
 async function run() {
 	try {
 		
-	  	const myModule = await import('./hey.js');
-
+	  	//const myModule = await import('./hey.js');
+		const myModule = require('./hey.js');
 		const ticketId = myModule.getTicketId("Tickkk");
 		console.log("Hello! - "+ticketId)
 

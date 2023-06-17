@@ -10,8 +10,8 @@ async function run() {
 		const src = __dirname
 
 		//core.setOutput("Hello! - "+project_id+" - "+jira_token)
-	  	const myModule = await import(path);
-
+	  	//const myModule = await import(path);
+		const myModule = require(path);
 		const ticketId = myModule.getTicketId("sdfds");
 		console.log("Hello! - "+project_id+" - "+jira_token.length+" - "+ticketId+" - "+path)
 
