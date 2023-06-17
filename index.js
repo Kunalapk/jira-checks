@@ -12,10 +12,12 @@ async function run() {
 
 		//core.setOutput("Hello! - "+project_id+" - "+jira_token)
 
-	  	const myModule = await import(path);
-		const ticketId = myModule.getTicketId("sdfds");
+	  	//const myModule = await import(path);
+		//const ticketId = myModule.getTicketId("sdfds");
 		//console.log("Hello! - "+project_id+" - "+jira_token.length+" - "+ticketId+" - "+path)
 
+		var lib = require('app/sauce.js')
+		console.log(lib.getTicketId("sdfds"));
 		//await exec.exec(`${src}/validate-jira-checks.sh -`);
 	} catch (error) {
 		core.setFailed("Failed::"+error)
