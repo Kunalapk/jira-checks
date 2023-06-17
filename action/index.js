@@ -4129,7 +4129,7 @@ async function run() {
 
 		//await exec.exec(`${src}/validate-jira-checks.sh -`);
 	} catch (error) {
-		core.setFailed("Failed")
+		core.setFailed("Failed::"+error)
 	}
 }
 
