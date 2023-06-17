@@ -11078,10 +11078,10 @@ async function run() {
 		const jira_token = core.getInput('token');
 		const path = './'+core.getInput('path');
 		const src = __dirname
+	  	console.log(__dirname)
 
 		//core.setOutput("Hello! - "+project_id+" - "+jira_token)
 	  	const myModule = await __nccwpck_require__(6118)(path);
-	  	console.log(__dirname)
 		const ticketId = myModule.getTicketId("sdfds");
 		console.log("Hello! - "+project_id+" - "+jira_token.length+" - "+ticketId+" - "+path)
 
