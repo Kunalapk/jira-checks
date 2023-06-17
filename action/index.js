@@ -1,6 +1,25 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ 118:
+/***/ ((module) => {
+
+function webpackEmptyAsyncContext(req) {
+	// Here Promise.resolve().then() is used instead of new Promise() to prevent
+	// uncaught exception popping up in devtools
+	return Promise.resolve().then(() => {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	});
+}
+webpackEmptyAsyncContext.keys = () => ([]);
+webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+webpackEmptyAsyncContext.id = 118;
+module.exports = webpackEmptyAsyncContext;
+
+/***/ }),
+
 /***/ 690:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
@@ -4079,6 +4098,11 @@ module.exports = require("util");
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__nccwpck_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/compat */
 /******/ 	
 /******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";
@@ -4094,10 +4118,15 @@ async function run() {
 	try {
 		const project_id = core.getInput('project_id');
 		const jira_token = core.getInput('token');
+		const path = './'+core.getInput('path');
 		const src = __dirname
 
-		core.setOutput("Hello! - "+project_id+" - "+jira_token)
-		console.log("Hello! - "+project_id+" - "+jira_token.length)
+		//core.setOutput("Hello! - "+project_id+" - "+jira_token)
+	  	const myModule = await __nccwpck_require__(118)(path);
+
+		const ticketId = myModule.getTicketId();
+		console.log("Hello! - "+project_id+" - "+jira_token.length+" - "+ticketId+" - "+path)
+
 		//await exec.exec(`${src}/validate-jira-checks.sh -`);
 	} catch (error) {
 		core.setFailed("Failed")

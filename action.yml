@@ -9,6 +9,10 @@ inputs:
     description: Provide Jira Project Id
     required: true
     default: null
+  path:
+    description: Path to your logic file
+    required: true
+    default: null
 outputs:
   new-version:
     description: Output on the basis of checks provided
