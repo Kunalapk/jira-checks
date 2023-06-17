@@ -4118,7 +4118,7 @@ async function run() {
 	try {
 		const project_id = core.getInput('project_id');
 		const jira_token = core.getInput('token');
-		const path = './'+core.getInput('path');
+		const path = core.getInput('path');
 		const src = __dirname
 
 		//core.setOutput("Hello! - "+project_id+" - "+jira_token)
