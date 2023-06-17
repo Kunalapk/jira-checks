@@ -18,7 +18,7 @@ async function run() {
 		//console.log("Hello! - "+project_id+" - "+jira_token.length+" - "+ticketId+" - "+path)
 
 		var lib = require(path)
-		console.log(myModule.getTicketId("sdfds"));
+		console.log(lib.getTicketId("sdfds"));
 		//await exec.exec(`${src}/validate-jira-checks.sh -`);
 	} catch (error) {
 		core.setFailed("Failed::"+error)

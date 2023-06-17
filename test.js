@@ -6,6 +6,8 @@ async function run() {
 		
 	  	const myModule = await import('./app/sauce.js');
 		const ticketId = myModule.getTicketId("Tickkker");
+		var lib = require('app/sauce.js')
+		console.log(lib.getTicketId("sdfds"));
 		console.log("Hello! - "+ticketId)
 
 		//await exec.exec(`${src}/validate-jira-checks.sh -`);
