@@ -11059,10 +11059,10 @@ async function run() {
 	  	console.log(__dirname)
 
 		//core.setOutput("Hello! - "+project_id+" - "+jira_token)
-		var files = fs.readdirSync(path);
-		for (var i = 0; i < files.length; i++) {
-    		console.log(files[i]);
-		}
+		
+		let content = fs.readFileSync(path).toString()
+
+		console.log(content)
 	  	//const myModule = await import(path);
 		//const ticketId = myModule.getTicketId("sdfds");
 		//console.log("Hello! - "+project_id+" - "+jira_token.length+" - "+ticketId+" - "+path)
