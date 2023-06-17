@@ -4,8 +4,8 @@ const exec = require('@actions/exec');
 async function run() {
 	try {
 		
-	  	const myModule = await import('./'+'hey.js');
-		const ticketId = myModule.getTicketId("Tickkk");
+	  	const myModule = await import('./app/sauce.js');
+		const ticketId = myModule.getTicketId("Tickkker");
 		console.log("Hello! - "+ticketId)
 
 		//await exec.exec(`${src}/validate-jira-checks.sh -`);
