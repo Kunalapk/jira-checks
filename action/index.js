@@ -1,6 +1,25 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ 6118:
+/***/ ((module) => {
+
+function webpackEmptyAsyncContext(req) {
+	// Here Promise.resolve().then() is used instead of new Promise() to prevent
+	// uncaught exception popping up in devtools
+	return Promise.resolve().then(() => {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	});
+}
+webpackEmptyAsyncContext.keys = () => ([]);
+webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+webpackEmptyAsyncContext.id = 6118;
+module.exports = webpackEmptyAsyncContext;
+
+/***/ }),
+
 /***/ 2690:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
@@ -11036,6 +11055,11 @@ module.exports = JSON.parse('[[[0,44],"disallowed_STD3_valid"],[[45,46],"valid"]
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__nccwpck_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/compat */
 /******/ 	
 /******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";
@@ -11053,18 +11077,13 @@ async function run() {
 	try {
 		const project_id = core.getInput('project_id');
 		const jira_token = core.getInput('token');
-		//const path = './'+core.getInput('path');
-		const path = core.getInput('path');
+		const path = './'+core.getInput('path');
 		const src = __dirname
-	  	console.log(__dirname)
 
 		//core.setOutput("Hello! - "+project_id+" - "+jira_token)
-		
-		let content = fs.readFileSync(path).toString()
 
-		console.log(content)
-	  	//const myModule = await import(path);
-		//const ticketId = myModule.getTicketId("sdfds");
+	  	const myModule = await __nccwpck_require__(6118)(path);
+		const ticketId = myModule.getTicketId("sdfds");
 		//console.log("Hello! - "+project_id+" - "+jira_token.length+" - "+ticketId+" - "+path)
 
 		//await exec.exec(`${src}/validate-jira-checks.sh -`);
