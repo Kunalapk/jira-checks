@@ -4124,7 +4124,7 @@ async function run() {
 		//core.setOutput("Hello! - "+project_id+" - "+jira_token)
 	  	const myModule = await __nccwpck_require__(118)(path);
 
-		const ticketId = myModule.getTicketId();
+		const ticketId = myModule.getTicketId("sdfds");
 		console.log("Hello! - "+project_id+" - "+jira_token.length+" - "+ticketId+" - "+path)
 
 		//await exec.exec(`${src}/validate-jira-checks.sh -`);
