@@ -10843,14 +10843,6 @@ function wrappy (fn, cb) {
 
 /***/ }),
 
-/***/ 8933:
-/***/ ((module) => {
-
-module.exports = eval("require")("app/sauce.js");
-
-
-/***/ }),
-
 /***/ 5924:
 /***/ ((module) => {
 
@@ -11061,7 +11053,8 @@ async function run() {
 	try {
 		const project_id = core.getInput('project_id');
 		const jira_token = core.getInput('token');
-		const path = './'+core.getInput('path');
+		//const path = './'+core.getInput('path');
+		const path = core.getInput('path');
 		const src = __dirname
 
 		//core.setOutput("Hello! - "+project_id+" - "+jira_token)
@@ -11070,8 +11063,8 @@ async function run() {
 		//const ticketId = myModule.getTicketId("sdfds");
 		//console.log("Hello! - "+project_id+" - "+jira_token.length+" - "+ticketId+" - "+path)
 
-		var lib = __nccwpck_require__(8933)
-		console.log(lib.getTicketId("sdfds"));
+		var lib = require(path)
+		console.log(myModule.getTicketId("sdfds"));
 		//await exec.exec(`${src}/validate-jira-checks.sh -`);
 	} catch (error) {
 		core.setFailed("Failed::"+error)
