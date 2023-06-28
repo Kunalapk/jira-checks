@@ -10,12 +10,11 @@ async function run() {
 		//const path = './'+core.getInput('path');
 		const path = core.getInput('path');
 
-		console.log(github)
+		console.log("TITLEXXX: "+github.context.payload.pull_request.title)
 		console.log(JSON.parse(JSON.stringify(github)))
 		console.log(JSON.stringify(github))
-		const { stdout } = await exec.getExecOutput("npx run-func "+path+" getTicketId XYZ")
+		const { stdout } = await exec.getExecOutput("npx run-func "+path+" getTicketId 'XYZ'")
 		console.log("sdnfkjdnsf - "+stdout+" - "+path)
-		//await exec.exec(`${src}/validate-jira-checks.sh -`);
 	} catch (error) {
 		core.setFailed("Failed::"+error)
 	}
