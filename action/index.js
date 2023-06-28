@@ -11055,17 +11055,15 @@ async function run() {
 		const jira_token = core.getInput('token');
 		//const path = './'+core.getInput('path');
 		const path = core.getInput('path');
-		const src = __dirname
 
-		//core.setOutput("Hello! - "+project_id+" - "+jira_token)
-
-	  	//const myModule = await import(path);
-		//const ticketId = myModule.getTicketId("sdfds");
-		//console.log("Hello! - "+project_id+" - "+jira_token.length+" - "+ticketId+" - "+path)
-
-		//var lib = require(path)
-		//console.log(lib.getTicketId("sdfds"));
-
+		exec.exec("npx run-func "+path+" getTicketId XYZ").then(
+			function(value) {
+				console.log("TTTEETETETET - "+value)
+			},
+			function(error) {
+				console.log("TTTEETETETET - "+error)
+			}
+		);
 		var text = await exec.exec("npx run-func "+path+" getTicketId XYZ")
 		console.log("sdnfkjdnsf - "+text+" - "+path)
 		//await exec.exec(`${src}/validate-jira-checks.sh -`);
