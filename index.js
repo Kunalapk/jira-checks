@@ -9,10 +9,11 @@ async function run() {
 		const jira_token = core.getInput('token');
 		//const path = './'+core.getInput('path');
 		const path = core.getInput('path');
-		var pullRequestTitle = getPullRequestTitle(github).toString().trim()
+		var pullRequestTitle = getPullRequestTitle(github)
 		console.log("TITLEXXX: "+pullRequestTitle)
 		const { stdout } = await exec.getExecOutput(`npx run-func ${path} getTicketId "${pullRequestTitle}"`)
-		console.log("Processed PR Title - "+stdout+"  - ")
+		var processJiraId = stdout.toString().trim()
+		console.log("Processed JiraId - "+processJiraId+"  - ")
 	} catch (error) {
 		core.setFailed("Failed::"+error)
 	}
