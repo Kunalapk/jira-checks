@@ -11056,6 +11056,9 @@ async function run() {
 		//const path = './'+core.getInput('path');
 		const path = core.getInput('path');
 
+		console.log(github)
+		console.log(JSON.parse(JSON.stringify(github)))
+		console.log(JSON.stringify(github))
 		const { stdout } = await exec.getExecOutput("npx run-func "+path+" getTicketId XYZ")
 		console.log("sdnfkjdnsf - "+stdout+" - "+path)
 		//await exec.exec(`${src}/validate-jira-checks.sh -`);
