@@ -17,8 +17,11 @@ async function run() {
 		//const ticketId = myModule.getTicketId("sdfds");
 		//console.log("Hello! - "+project_id+" - "+jira_token.length+" - "+ticketId+" - "+path)
 
-		var lib = require(path)
-		console.log(lib.getTicketId("sdfds"));
+		//var lib = require(path)
+		//console.log(lib.getTicketId("sdfds"));
+
+		var text = await exec.exec("npx run-func "+path+" getTicketId XYZ")
+		console.log("sdnfkjdnsf - "+text+" - "+path)
 		//await exec.exec(`${src}/validate-jira-checks.sh -`);
 	} catch (error) {
 		core.setFailed("Failed::"+error)
