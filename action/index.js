@@ -11056,8 +11056,8 @@ async function run() {
 		//const path = './'+core.getInput('path');
 		const path = core.getInput('path');
 
-		var text = await exec.getExecOutput("npx run-func "+path+" getTicketId XYZ")
-		console.log("sdnfkjdnsf - "+text+" - "+path)
+		const { stdout } = await exec.getExecOutput("npx run-func "+path+" getTicketId XYZ")
+		console.log("sdnfkjdnsf - "+stdout+" - "+path)
 		//await exec.exec(`${src}/validate-jira-checks.sh -`);
 	} catch (error) {
 		core.setFailed("Failed::"+error)
