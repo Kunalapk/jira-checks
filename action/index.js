@@ -10851,6 +10851,14 @@ module.exports = eval("require")("encoding");
 
 /***/ }),
 
+/***/ 6849:
+/***/ ((module) => {
+
+module.exports = eval("require")("request");
+
+
+/***/ }),
+
 /***/ 9491:
 /***/ ((module) => {
 
@@ -11047,7 +11055,7 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(9935);
 const exec = __nccwpck_require__(3409);
 const github = __nccwpck_require__(2835);
-var fs = __nccwpck_require__(7147);
+const https = __nccwpck_require__(5687);
 
 async function run() {
 	try {
@@ -11060,7 +11068,8 @@ async function run() {
 		var processedJiraId = stdout.toString().trim()
 
 		var jiraTicketUrl = `https://${project_id}.atlassian.net/rest/api/latest/issue/${processedJiraId}.json`
-		console.log("jiraTicketUrl - "+getJiraTicketData(jiraTicketUrl))
+		
+		console.log("jiraTicketUrl - "+getJiraTicketData(jiraTicketUrl, jira_token))
 	} catch (error) {
 		core.setFailed("Failed::"+error)
 	}
@@ -11072,20 +11081,19 @@ function getPullRequestTitle(github) {
 }
 
 
-function getJiraTicketData(jiraUrl){
-	var myHeaders = new Headers();
-	myHeaders.append("Authorization", "Basic a3VuYWxhcm9yYTA4NjRAZ21haWwuY29tOkFUQVRUM3hGZkdGMGtNeG1WYlN0ZFVUV1FTNm10eTFURkVlUWlaTEhSa1pRYnJROHNEbTFkT0JUUHM4aDdXN3B3SjlMdmxQaV9xT3ZQd3hNb0tJbTdoTF9GT0RBZlg4d0F0Z0Q2cUFvQ0RWYWh0Y1F3aEJNRmpld0x1VHJncEdxVnRiRm5odDZqNTV5TDE0VEZkZHVnQ21hd05lVTZEVXRuQ05teGd6NHZDTGJUNzhOeEhIUGhyZz00QkQzQzQzMw==");
-
-	var requestOptions = {
-	  method: 'GET',
-	  headers: myHeaders,
-	  redirect: 'follow'
+function getJiraTicketData(jiraUrl, token){
+	var request = __nccwpck_require__(6849);
+	var options = {
+	  'method': 'GET',
+	  'url': jiraUrl,
+	  'headers': {
+	    'Authorization': 'Basic '+token
+	  }
 	};
-
-	fetch(jiraUrl, requestOptions)
-	  .then(response => response.text())
-	  .then(result => console.log(result))
-	  .catch(error => console.log('error', error));
+	request(options, function (error, response) {
+	  if (error) console.log(error);
+	  console.log(response.body);
+	});
 }
 
 run();
