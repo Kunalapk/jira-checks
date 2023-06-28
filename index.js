@@ -10,15 +10,7 @@ async function run() {
 		//const path = './'+core.getInput('path');
 		const path = core.getInput('path');
 
-		exec.exec("npx run-func "+path+" getTicketId XYZ").then(
-			function(value) {
-				console.log("TTTEETETETET - "+value)
-			},
-			function(error) {
-				console.log("TTTEETETETET - "+error)
-			}
-		);
-		var text = await exec.exec("npx run-func "+path+" getTicketId XYZ")
+		var text = await exec.getExecOutput("npx run-func "+path+" getTicketId XYZ")
 		console.log("sdnfkjdnsf - "+text+" - "+path)
 		//await exec.exec(`${src}/validate-jira-checks.sh -`);
 	} catch (error) {
