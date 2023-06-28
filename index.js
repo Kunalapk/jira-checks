@@ -12,7 +12,7 @@ async function run() {
 		var pullRequestTitle = getPullRequestTitle(github).toString().trim()
 		console.log("TITLEXXX: "+pullRequestTitle)
 		const { stdout } = await exec.getExecOutput(`npx run-func ${path} getTicketId "${pullRequestTitle}"`)
-		console.log("Processed PR Title - "+stdout)
+		console.log("Processed PR Title - "+stdout+"  - ")
 	} catch (error) {
 		core.setFailed("Failed::"+error)
 	}
