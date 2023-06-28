@@ -12,7 +12,8 @@ async function run() {
 		var pullRequestTitle = getPullRequestTitle(github)
 		console.log("TITLEXXX: "+pullRequestTitle)
 		//console.log(JSON.stringify(github))
-		const { stdout } = await exec.getExecOutput("npx run-func "+path+" getTicketId '"+pullRequestTitle+"'")
+		//const {stdout} = await exec.getExecOutput("node -e 'require("./test.js").print1("sdfnjfns")'")
+		const { stdout } = await exec.getExecOutput(`npx run-func ${path} getTicketId "${pullRequestTitle}"`)
 		console.log("sdnfkjdnsf - "+stdout+" - "+path)
 	} catch (error) {
 		core.setFailed("Failed::"+error)
