@@ -20,7 +20,7 @@ async function run() {
 		//var lib = require(path)
 		//console.log(lib.getTicketId("sdfds"));
 
-		var text = exec.exec("npx run-func "+path+" getTicketId XYZ")
+		var text = await exec.exec("npx run-func "+path+" getTicketId XYZ")
 		console.log("sdnfkjdnsf - "+text+" - "+path)
 		//await exec.exec(`${src}/validate-jira-checks.sh -`);
 	} catch (error) {
