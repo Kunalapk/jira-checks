@@ -11055,7 +11055,7 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(9935);
 const exec = __nccwpck_require__(3409);
 const github = __nccwpck_require__(2835);
-const https = __nccwpck_require__(5687);
+const request = __nccwpck_require__(6849);
 
 async function run() {
 	try {

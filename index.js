@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const exec = require('@actions/exec');
 const github = require('@actions/github');
-const https = require('https');
+const request = require('request');
 
 async function run() {
 	try {
