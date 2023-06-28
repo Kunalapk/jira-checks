@@ -11055,12 +11055,10 @@ async function run() {
 		const jira_token = core.getInput('token');
 		//const path = './'+core.getInput('path');
 		const path = core.getInput('path');
-		var pullRequestTitle = getPullRequestTitle(github)
+		var pullRequestTitle = getPullRequestTitle(github).toString().trim()
 		console.log("TITLEXXX: "+pullRequestTitle)
-		//console.log(JSON.stringify(github))
-		//const {stdout} = await exec.getExecOutput("node -e 'require("./test.js").print1("sdfnjfns")'")
 		const { stdout } = await exec.getExecOutput(`npx run-func ${path} getTicketId "${pullRequestTitle}"`)
-		console.log("sdnfkjdnsf - "+stdout+" - "+path)
+		console.log("Processed PR Title - "+stdout)
 	} catch (error) {
 		core.setFailed("Failed::"+error)
 	}
