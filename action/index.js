@@ -43840,6 +43840,10 @@ async function run() {
 		
 		console.log("jiraTicketUrl - "+getJiraTicketData(jiraTicketUrl, jira_token))
 		//core.setFailed("MISSING");
+
+
+		let github_token = core.getInput('GITHUB_TOKEN');
+    	let octokit = github.getOctokit(github_token);
 		octokit.rest.issues.listComments.forEach(element => {
   			console.log("jndsjnjksdnfs - " +element);
 		});
