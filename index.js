@@ -5,17 +5,18 @@ const request = require('request');
 
 async function run() {
 	try {
-		const project_id = core.getInput('project_id');
-		const jira_token = core.getInput('token');
-		const path = core.getInput('path');
+		let project_id = core.getInput('project_id');
+		let jira_token = core.getInput('token');
+		let path = core.getInput('path');
 
-		var pullRequestTitle = getPullRequestTitle(github)
-		const { stdout } = await exec.getExecOutput(`npx run-func ${path} getTicketId "${pullRequestTitle}"`)
-		var processedJiraId = stdout.toString().trim()
+		let pullRequestTitle = getPullRequestTitle(github)
+		let { stdout } = await exec.getExecOutput(`npx run-func ${path} getTicketId "${pullRequestTitle}"`)
+		let processedJiraId = stdout.toString().trim()
 
-		var jiraTicketUrl = `https://${project_id}.atlassian.net/rest/api/latest/issue/${processedJiraId}.json`
+		let jiraTicketUrl = `https://${project_id}.atlassian.net/rest/api/latest/issue/${processedJiraId}.json`
 		
 		console.log("jiraTicketUrl - "+getJiraTicketData(jiraTicketUrl, jira_token))
+		core.setFailed("MISSING");
 	} catch (error) {
 		core.setFailed("Failed::"+error)
 	}
