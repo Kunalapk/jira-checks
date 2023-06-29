@@ -17,14 +17,14 @@ inputs:
     description: Path to your logic file
     required: true
     default: null
-outputs:
-  new-version:
-  description: Output on the basis of checks provided
 permissions:
   id-token: write
   contents: read
   issues: write
   pull-requests: write
+outputs:
+  new-version:
+    description: Output on the basis of checks provided
 runs:
   using: node12
   main: action/index.js
