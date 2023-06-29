@@ -43820,7 +43820,7 @@ var __webpack_exports__ = {};
 (() => {
 const core = __nccwpck_require__(9935);
 const exec = __nccwpck_require__(3409);
-const github = __nccwpck_require__(2835);
+const {github, context} = __nccwpck_require__(2835);
 const request = __nccwpck_require__(8698);
 
 async function run() {
@@ -43828,6 +43828,9 @@ async function run() {
 		let project_id = core.getInput('project_id');
 		let jira_token = core.getInput('token');
 		let path = core.getInput('path');
+		//let token = core.getInput('github-token', {required: true})
+        //const githubReactor = new GitHub(token, {} )
+
 
 		let pullRequestTitle = getPullRequestTitle(github)
 		let { stdout } = await exec.getExecOutput(`npx run-func ${path} getTicketId "${pullRequestTitle}"`)
@@ -43836,7 +43839,14 @@ async function run() {
 		let jiraTicketUrl = `https://${project_id}.atlassian.net/rest/api/latest/issue/${processedJiraId}.json`
 		
 		console.log("jiraTicketUrl - "+getJiraTicketData(jiraTicketUrl, jira_token))
-		core.setFailed("MISSING");
+		//core.setFailed("MISSING");
+
+		const result = await github.issues.createComment({
+            owner: context.actor,
+            repo: context.payload.repository.full_name,
+            issue_number: 1,
+            body: "We need to have the word in the body of the pull request"
+        });
 	} catch (error) {
 		core.setFailed("Failed::"+error)
 	}
