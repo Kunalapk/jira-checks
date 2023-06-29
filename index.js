@@ -20,27 +20,28 @@ async function run() {
 		
 		console.log("jiraTicketUrl - "+getJiraTicketData(jiraTicketUrl, jira_token))
 		//core.setFailed("MISSING");
-
-		const github_token = core.getInput('GITHUB_TOKEN');
-
-	    const context = github.context;
-
-	    const pull_request_number = context.payload.pull_request.number;
-
-	    //const octokit = new github.GitHub(github_token);
-	    const octokit = github.getOctokit(github_token);
-	    
-	    const new_comment = octokit.rest.issues.createComment({
-        	...context.repo,
-        	issue_number: pull_request_number,
-        	body: "hhjhgbhjgjhg"
-      	});
+		octokit.rest.issues.listComments.forEach(element => {
+  			console.log("jndsjnjksdnfs - " +element);
+		});
+		makeComment(github, core, "Test Comment")
 	} catch (error) {
 		core.setFailed("Failed::"+error)
 	}
 }
 
 
+function makeComment(github, core, message) {
+	let github_token = core.getInput('GITHUB_TOKEN');
+	let context = github.context;
+    let pull_request_number = context.payload.pull_request.number;
+    let octokit = github.getOctokit(github_token);
+    
+    let new_comment = octokit.rest.issues.createComment({
+    	...context.repo,
+    	issue_number: pull_request_number,
+    	body: message
+  	});
+}
 function getPullRequestTitle(github) {
 	return github.context.payload.pull_request.title
 }
