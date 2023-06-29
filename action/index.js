@@ -43820,7 +43820,7 @@ var __webpack_exports__ = {};
 (() => {
 const core = __nccwpck_require__(9935);
 const exec = __nccwpck_require__(3409);
-const {github, context} = __nccwpck_require__(2835);
+const github = __nccwpck_require__(2835);
 const request = __nccwpck_require__(8698);
 
 async function run() {
@@ -43841,12 +43841,21 @@ async function run() {
 		console.log("jiraTicketUrl - "+getJiraTicketData(jiraTicketUrl, jira_token))
 		//core.setFailed("MISSING");
 
-		const result = await github.issues.createComment({
-            owner: context.actor,
-            repo: context.payload.repository.full_name,
-            issue_number: 1,
-            body: "We need to have the word in the body of the pull request"
-        });
+		const github_token = core.getInput('GITHUB_TOKEN');
+
+	    const context = github.context;
+	    if (context.payload.pull_request == null) {
+	        core.setFailed('No pull request found.');
+	        return;
+	    }
+	    const pull_request_number = context.payload.pull_request.number;
+
+	    const octokit = new github.GitHub(github_token);
+	    const new_comment = octokit.issues.createComment({
+        	...context.repo,
+        	issue_number: pull_request_number,
+        	body: "hhjhgbhjgjhg"
+      	});
 	} catch (error) {
 		core.setFailed("Failed::"+error)
 	}
