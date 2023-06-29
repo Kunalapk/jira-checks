@@ -31,6 +31,12 @@ async function run() {
     		issue_number: pull_request_number,
   		});
   		let comments = items.data;
+  		comments.forEach(function(element) => {
+  			octokit.issues.deleteComment({
+  				...context.repo,
+  				element.id
+			});
+  		});
   		console.log("sdfnlsdnfl - "+JSON.stringify(comments))
 		makeComment(github, core, "Test Comment")
 	} catch (error) {
