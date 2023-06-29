@@ -13,6 +13,10 @@ inputs:
     description: Path to your logic file
     required: true
     default: null
+  GITHUB_TOKEN:
+    description: Path to your logic file
+    required: true
+    default: null
 outputs:
   new-version:
     description: Output on the basis of checks provided
