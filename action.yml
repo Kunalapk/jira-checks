@@ -19,7 +19,12 @@ inputs:
     default: null
 outputs:
   new-version:
-    description: Output on the basis of checks provided
+  description: Output on the basis of checks provided
+permissions:
+  id-token: write
+  contents: read
+  issues: write
+  pull-requests: write
 runs:
   using: node12
   main: action/index.js
