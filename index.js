@@ -30,7 +30,8 @@ async function run() {
     		...context.repo,
     		issue_number: pull_request_number,
   		});
-  		console.log("sdfnlsdnfl - "+JSON.stringify(items))
+  		let comments = items.data;
+  		console.log("sdfnlsdnfl - "+JSON.stringify(comments))
 		makeComment(github, core, "Test Comment")
 	} catch (error) {
 		core.setFailed("Failed::"+error)
