@@ -26,7 +26,7 @@ async function run() {
 		let context = github.context;
     	let octokit = github.getOctokit(github_token);
     	let pull_request_number = context.payload.pull_request.number;
-		let items = octokit.rest.issues.listComments({
+		let items = await octokit.rest.issues.listComments({
     		...context.repo,
     		issue_number: pull_request_number,
   		});
