@@ -31,11 +31,8 @@ async function run() {
     		issue_number: pull_request_number,
   		});
   		let comments = items.data;
-  		comments.forEach(function(element) => {
-  			octokit.issues.deleteComment({
-  				...context.repo,
-  				element.id
-			});
+  		comments.forEach(element => {
+  			deleteComment(element.id)
   		});
   		console.log("sdfnlsdnfl - "+JSON.stringify(comments))
 		makeComment(github, core, "Test Comment")
@@ -63,13 +60,12 @@ function getPullRequestTitle(github) {
 	return github.context.payload.pull_request.title
 }
 
-function deleteComment() {
+function deleteComment(comment_id) {
 	let github_token = core.getInput('GITHUB_TOKEN');
 	let context = github.context;
 	let octokit = github.getOctokit(github_token);
 	octokit.rest.issues.deleteComment({
 	  ...context.repo,
-	  repo,
 	  comment_id,
 	});
 }
