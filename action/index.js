@@ -43843,8 +43843,13 @@ async function run() {
 
 
 		let github_token = core.getInput('GITHUB_TOKEN');
+		let context = github.context;
     	let octokit = github.getOctokit(github_token);
-		octokit.rest.issues.listComments.forEach(element => {
+    	let pull_request_number = context.payload.pull_request.number;
+		octokit.rest.issues.listComments({
+    		...context.repo,
+    		issue_number: pull_request_number,
+  		}).forEach(element => {
   			console.log("jndsjnjksdnfs - " +element);
 		});
 		makeComment(github, core, "Test Comment")
@@ -43866,10 +43871,22 @@ function makeComment(github, core, message) {
     	body: message
   	});
 }
+
+
 function getPullRequestTitle(github) {
 	return github.context.payload.pull_request.title
 }
 
+function deleteComment() {
+	let github_token = core.getInput('GITHUB_TOKEN');
+	let context = github.context;
+	let octokit = github.getOctokit(github_token);
+	octokit.rest.issues.deleteComment({
+	  ...context.repo,
+	  repo,
+	  comment_id,
+	});
+}
 
 function getJiraTicketData(jiraUrl, token){
 	var request = __nccwpck_require__(8698);
