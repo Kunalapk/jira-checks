@@ -43850,7 +43850,7 @@ async function run() {
     		...context.repo,
     		issue_number: pull_request_number,
   		});
-  		console.log("sdfnlsdnfl - "+items)
+  		console.log("sdfnlsdnfl - "+JSON.stringify(items))
 		makeComment(github, core, "Test Comment")
 	} catch (error) {
 		core.setFailed("Failed::"+error)
