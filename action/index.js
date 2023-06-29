@@ -43846,12 +43846,11 @@ async function run() {
 		let context = github.context;
     	let octokit = github.getOctokit(github_token);
     	let pull_request_number = context.payload.pull_request.number;
-		octokit.rest.issues.listComments({
+		let items = octokit.rest.issues.listComments({
     		...context.repo,
     		issue_number: pull_request_number,
-  		}).forEach(element => {
-  			console.log("jndsjnjksdnfs - " +element);
-		});
+  		});
+  		console.log("sdfnlsdnfl - "+items)
 		makeComment(github, core, "Test Comment")
 	} catch (error) {
 		core.setFailed("Failed::"+error)
